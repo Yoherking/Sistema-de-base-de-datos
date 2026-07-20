@@ -1,0 +1,4 @@
+com\example\tienda_repuestos\controller\RepuestoController.class
+com\example\tienda_repuestos\TiendaRepuestosApplication.class
+com\example\tienda_repuestos\entity\Repuesto.class
+com\example\tienda_repuestos\repository\RepuestoRepository.class

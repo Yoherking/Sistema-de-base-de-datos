@@ -1,0 +1,106 @@
+:root {
+  --primary: #0f4c81;
+  --secondary: #1f6fb2;
+  --bg: #f4f7fb;
+  --text: #2f3e4e;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #edf4ff, #f8fbff);
+  color: var(--text);
+}
+
+.sidebar {
+  width: 280px;
+  background: linear-gradient(180deg, var(--primary), var(--secondary));
+  color: white;
+  padding: 24px 20px;
+}
+
+.sidebar h2 {
+  margin: 0;
+  font-weight: 700;
+}
+
+.sidebar-subtitle {
+  opacity: 0.85;
+  margin-top: 6px;
+}
+
+.nav-link {
+  background: transparent;
+  border: 0;
+  color: white;
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 10px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.nav-link.active, .nav-link:hover {
+  background: rgba(255,255,255,0.18);
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: #6b7b8f;
+  font-size: 0.74rem;
+  margin-bottom: 4px;
+}
+
+.card {
+  border: none;
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(15,76,129,0.08);
+}
+
+.content-section { display: none; }
+.content-section.active { display: block; }
+
+.section-title { font-weight: 700; color: var(--primary); }
+
+.btn-primary { background: var(--primary); border-color: var(--primary); }
+.btn-primary:hover { background: var(--secondary); border-color: var(--secondary); }
+
+.table thead { background: #f5f9ff; }
+
+.login-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, #0f4c81, #1f6fb2);
+}
+
+.login-card {
+  width: min(92vw, 430px);
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.2);
+}
+
+.login-card h2 { color: var(--primary); font-weight: 700; }
+.login-card .form-control { border-radius: 12px; padding: 10px 12px; }
+.login-alert { display: none; }
+.login-alert.show { display: block; }
+
+@media (max-width: 900px) {
+  .d-flex { flex-direction: column; }
+  .sidebar { width: 100%; }
+}

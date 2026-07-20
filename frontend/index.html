@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Administrativo - Tienda de Repuestos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="d-flex min-vh-100">
+    <aside class="sidebar">
+      <h2>REPUESTOS SUR</h2>
+      <p class="sidebar-subtitle">Gestión operativa</p>
+      <nav class="nav flex-column mt-4">
+        <button class="nav-link active" data-section="repuestos">Repuestos</button>
+        <button class="nav-link" data-section="clientes">Clientes</button>
+        <button class="nav-link" data-section="vehiculos">Vehículos</button>
+        <button class="nav-link" data-section="pedidos">Pedidos</button>
+        <button class="nav-link" data-section="ventas">Ventas</button>
+        <button class="nav-link" data-section="detalle-pedido">Detalle de Pedidos</button>
+        <button class="nav-link" data-section="compatibilidad">Compatibilidad</button>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Sistema corporativo</p>
+          <h1 id="pageTitle">Gestión de repuestos</h1>
+        </div>
+        <div class="d-flex gap-2">
+          <button class="btn btn-outline-secondary" id="btnLogout">Cerrar sesión</button>
+          <button class="btn btn-primary" id="btnNuevo">+ Nuevo</button>
+        </div>
+      </header>
+
+      <section id="repuestosSection" class="content-section active">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="section-title">Repuestos</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Nombre</th><th>Código</th><th>Precio</th><th>Stock</th><th>Acciones</th></tr></thead>
+                <tbody id="tablaRepuestos"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="clientesSection" class="content-section">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="section-title">Clientes</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Nombre</th><th>Teléfono</th><th>Acciones</th></tr></thead>
+                <tbody id="tablaClientes"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="vehiculosSection" class="content-section">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="section-title">Vehículos</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Marca</th><th>Modelo</th><th>Acciones</th></tr></thead>
+                <tbody id="tablaVehiculos"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pedidosSection" class="content-section">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="section-title">Pedidos</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Cliente</th><th>Vehículo</th><th>Fecha</th><th>Acciones</th></tr></thead>
+                <tbody id="tablaPedidos"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="ventasSection" class="content-section">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="section-title">Ventas</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Pedido</th><th>Fecha</th><th>Método</th><th>Monto</th><th>Acciones</th></tr></thead>
+                <tbody id="tablaVentas"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="detallePedidoSection" class="content-section">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="section-title">Detalle de pedidos</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Pedido</th><th>Repuesto</th><th>Cantidad</th><th>Precio</th><th>Acciones</th></tr></thead>
+                <tbody id="tablaDetallePedido"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="compatibilidadSection" class="content-section">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="section-title">Compatibilidad de vehículos</h3>
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead><tr><th>Repuesto</th><th>Vehículo</th><th>Acciones</th></tr></thead>
+                <tbody id="tablaCompatibilidad"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal fade" id="modalEntidad" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Registrar elemento</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="formEntidad">
+            <input type="hidden" id="idEntidad" />
+            <div id="formFields"></div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-primary" form="formEntidad">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
